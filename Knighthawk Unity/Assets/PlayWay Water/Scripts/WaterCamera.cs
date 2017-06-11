@@ -18,7 +18,7 @@ namespace PlayWay.Water
 	[ExecuteInEditMode]
 	public class WaterCamera : MonoBehaviour
 	{
-		[HideInInspector]
+        [HideInInspector]
 		[SerializeField]
 		private Shader depthBlitCopyShader;
 
@@ -62,7 +62,7 @@ namespace PlayWay.Water
 		[SerializeField]
 		private bool sharedCommandBuffers = false;
 
-		[HideInInspector]
+        [HideInInspector]
 		[SerializeField]
 		private int forcedVertexCount = 0;
 
@@ -641,7 +641,7 @@ namespace PlayWay.Water
 				return;
 			
 			effectsEnabled = true;
-			AddDepthRenderingCommands();
+            AddDepthRenderingCommands();
         }
 
 		private void DisableEffects()

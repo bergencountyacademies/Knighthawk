@@ -1,0 +1,72 @@
+// Knighthawk Demo
+
+#include <Servo.h>
+
+// Set actuator pins, must be PWM
+int actuator_front_pin = 9;
+int actuator_backL_pin = 10;
+int actuator_backR_pin = 11;
+
+Servo actuator_front;
+Servo actuator_backL;
+Servo actuator_backR;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Attaching Front Actuator...");
+  actuator_front.attach(actuator_front_pin);
+  Serial.println("Attaching Back Left Actuator...");
+  actuator_backL.attach(actuator_backL_pin);
+  Serial.println("Attaching Back Right Actuator...");
+  actuator_backR.attach(actuator_backR_pin);
+  Serial.println("All Attached, Ready...");
+}
+
+void loop() {
+  test();
+}
+
+void test() {
+  actuator_front.writeMicroseconds(2000);
+  actuator_backL.writeMicroseconds(2000);
+  actuator_backR.writeMicroseconds(2000);
+  Serial.println("ALL UP");
+  delay(4000);
+  actuator_front.writeMicroseconds(1500);
+  actuator_backL.writeMicroseconds(1500);
+  actuator_backR.writeMicroseconds(1500);
+  Serial.println("ALL STOP");
+  delay(2000);
+  actuator_front.writeMicroseconds(1639);
+  actuator_backL.writeMicroseconds(1361);
+  actuator_backR.writeMicroseconds(1361);
+  Serial.println("TILT UP");
+  delay(3000);
+  actuator_front.writeMicroseconds(1361);
+  actuator_backL.writeMicroseconds(1639);
+  actuator_backR.writeMicroseconds(1639);
+  Serial.println("TILT DOWN");
+  delay(6000);
+  actuator_front.writeMicroseconds(1639);
+  actuator_backL.writeMicroseconds(1361);
+  actuator_backR.writeMicroseconds(1361);
+  Serial.println("LEVEL");
+  delay(3000);
+  actuator_front.writeMicroseconds(1000);
+  actuator_backL.writeMicroseconds(1000);
+  actuator_backR.writeMicroseconds(1000);
+  Serial.println("GO DOWN");
+  delay(4000);
+  actuator_front.writeMicroseconds(1639);
+  actuator_backL.writeMicroseconds(1361);
+  actuator_backR.writeMicroseconds(1361);
+  Serial.println("LEVEL");
+  delay(3000);
+}
+
+void reset() {
+  actuator_front.writeMicroseconds(1000);
+  actuator_backL.writeMicroseconds(1000);
+  actuator_backR.writeMicroseconds(1000);
+}
+

@@ -1,19 +1,32 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knighthawk Unity.Plugins", "Knighthawk Unity.Plugins.csproj", "{5BCB0C76-5A2B-24AB-A52F-E3B9EF25C97E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knighthawk Unity", "Knighthawk Unity.csproj", "{71EAB558-173B-C63D-FC8D-C567F3F36FAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knighthawk Unity.Editor", "Knighthawk Unity.Editor.csproj", "{5BED0FBE-11E9-F30D-1849-6E66F9B8A5AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{5BCB0C76-5A2B-24AB-A52F-E3B9EF25C97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCB0C76-5A2B-24AB-A52F-E3B9EF25C97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCB0C76-5A2B-24AB-A52F-E3B9EF25C97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCB0C76-5A2B-24AB-A52F-E3B9EF25C97E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71EAB558-173B-C63D-FC8D-C567F3F36FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71EAB558-173B-C63D-FC8D-C567F3F36FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71EAB558-173B-C63D-FC8D-C567F3F36FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71EAB558-173B-C63D-FC8D-C567F3F36FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BED0FBE-11E9-F30D-1849-6E66F9B8A5AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BED0FBE-11E9-F30D-1849-6E66F9B8A5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BED0FBE-11E9-F30D-1849-6E66F9B8A5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BED0FBE-11E9-F30D-1849-6E66F9B8A5AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

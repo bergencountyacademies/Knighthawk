@@ -1,3 +1,30 @@
+//// Knighthawk Actuator
+//
+//#include <Servo.h>
+//int incomingByte = 0;
+//
+//void setup() {
+//  Serial.begin(9600);
+//}
+//
+//void loop() {
+//  int num;
+//  if (Serial.available() > 0) {
+//    incomingByte = Serial.read();
+//    if (incomingByte == 59)
+//      send(num);
+//      num = null;
+//    Serial.print("I received: ");
+//    Serial.println(incomingByte, DEC);
+//  }
+//}
+//
+//void send(int num) {
+//  if (num != null) {
+//   //http://stackoverflow.com/questions/24597929/how-to-convert-byte-to-int 
+//  }
+//}
+
 // Knighthawk Actuator
 
 #include <Servo.h>

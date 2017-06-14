@@ -14,8 +14,7 @@ void loop() {
   while (Serial.available() != 0) {
     int val = Serial.parseInt();
     Serial.println(val);
-    actuator_backL.writeMicroseconds(val);
-    actuator_backR.writeMicroseconds(val);
+    actuator.writeMicroseconds(val);
   }
 }
 

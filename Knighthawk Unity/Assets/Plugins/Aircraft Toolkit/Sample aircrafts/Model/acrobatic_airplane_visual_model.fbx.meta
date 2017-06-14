@@ -209,6 +209,7 @@ ModelImporter:
     4300074: canopy_chassis
     4300076: canopy_cockpit
     4300078: glass
+    4300080: glass_001
     7400000: Default Take
     9500000: //RootNode
     11100000: //RootNode

@@ -143,6 +143,7 @@ ModelImporter:
     3300034: Wheel_L
     3300036: Wheel_R
     3300038: Wheels_Front
+    4300000: S-Arrow
     4300002: Aileron_L
     4300004: Flap_L
     4300006: Flap_R
@@ -161,6 +162,7 @@ ModelImporter:
     4300032: Turbine_L
     4300034: Turbine_R
     4300036: Plane
+    4300038: S-Arrow_001
     7400000: Default Take
     7400002: Basics
     9500000: //RootNode

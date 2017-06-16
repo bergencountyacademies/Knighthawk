@@ -8,8 +8,8 @@ public class Knighthawk : MonoBehaviour {
     public Arduino arduino;
     public int pin = 9;
 
-    private int gameThreshold = 12;
-    private int hardwareThreshold = 16;
+    private int gameThreshold = 8;
+    private int hardwareThreshold = 12;
 
     public GameObject player;
     public GameObject frontTracker;
@@ -34,6 +34,8 @@ public class Knighthawk : MonoBehaviour {
     void angleControl(float hardwareAngle)
     {
         float playerAngle = player.transform.rotation.x * Mathf.Rad2Deg;
+
+        Debug.Log(playerAngle);
 
         if (playerAngle < -gameThreshold)
         {

@@ -194,6 +194,7 @@
     <Compile Include="Assets\PlayWay Water\Scripts\WindWaves\WavesRendererFFT.cs" />
     <Compile Include="Assets\PlayWay Water\Scripts\WindWaves\WavesRendererGerstner.cs" />
     <Compile Include="Assets\PlayWay Water\Scripts\WindWaves\WindWaves.cs" />
+    <Compile Include="Assets\Scripts\FlightPhysics.cs" />
     <Compile Include="Assets\Scripts\Knighthawk.cs" />
     <Compile Include="Assets\Scripts\WaterSettings.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />

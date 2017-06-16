@@ -8,6 +8,9 @@ public class Knighthawk : MonoBehaviour {
     public Arduino arduino;
     public int pin = 9;
 
+    private int gameThreshold = 12;
+    private int hardwareThreshold = 16;
+
     public GameObject player;
     public GameObject frontTracker;
     public GameObject backTracker;
@@ -19,36 +22,31 @@ public class Knighthawk : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        float playerAngle = player.transform.rotation.x*Mathf.Rad2Deg;
-        float hardwareAngle = Mathf.Atan((backTracker.transform.position.y - frontTracker.transform.position.y) / (.3f))*Mathf.Rad2Deg; // .3 f is distance between actuators
-
-        //Debug.Log(hardwareAngle);
-
-        if (playerAngle < -20)
-        {
-            moveTo(hardwareAngle, -20);
-        } else if (playerAngle > 20)
-        {
-            moveTo(hardwareAngle, 20);
-        } else
-        {
-            moveTo(hardwareAngle, playerAngle);
-        }
-        
-        /*if (Input.GetKey(KeyCode.UpArrow))
-        {
-            arduino.analogWrite(pin, 1700);
-            Debug.Log("up");
-        } else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            arduino.analogWrite(pin, 1300);
-            Debug.Log("down");
-        } else
-        {
+    void Update () {
+        //keyControl();
+        float hardwareAngle = Mathf.Atan((backTracker.transform.position.y - frontTracker.transform.position.y) / (.3f)) * Mathf.Rad2Deg; // .3 f is distance between actuators
+        if (hardwareAngle > hardwareThreshold && hardwareAngle < -hardwareThreshold)
             arduino.analogWrite(pin, 1500);
-            Debug.Log("stop");
-        }*/
+        else
+            angleControl(hardwareAngle);
+    }
+
+    void angleControl(float hardwareAngle)
+    {
+        float playerAngle = player.transform.rotation.x * Mathf.Rad2Deg;
+
+        if (playerAngle < -gameThreshold)
+        {
+            moveToLinear(hardwareAngle, -gameThreshold);
+        }
+        else if (playerAngle > gameThreshold)
+        {
+            moveToLinear(hardwareAngle, gameThreshold);
+        }
+        else
+        {
+            moveToLinear(hardwareAngle, playerAngle);
+        }
     }
 
     void moveTo(float from, float to)
@@ -67,11 +65,83 @@ public class Knighthawk : MonoBehaviour {
             arduino.analogWrite(pin, 1500);
         }
         Debug.Log(from + ", " + to + ", " + f); // if at 40 expScale should be 2, if at 0 expScale should be 1
-        
+    }
+
+    void moveToLinear(float from, float to)
+    {
+        float dif = Mathf.Abs(Mathf.Abs(from) - Mathf.Abs(to));
+        int speed = 0;
+        if (dif < 0.5f)
+            speed = 0;
+        else if (dif < 3)
+            speed = 100;
+        else if (dif > 20)
+            speed = 300;
+        else
+            speed = 200;
+        if (from < to)
+        {
+            arduino.analogWrite(pin, 1500 + speed);
+        }
+        else if (to < from)
+        {
+            arduino.analogWrite(pin, 1500 - speed);
+        }
+        else
+        {
+            arduino.analogWrite(pin, 1500);
+        }
+    }
+
+    void keyControl()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            arduino.analogWrite(pin, 1700);
+            Debug.Log("up");
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            arduino.analogWrite(pin, 1300);
+            Debug.Log("down");
+        }
+        else
+        {
+            arduino.analogWrite(pin, 1500);
+            Debug.Log("stop");
+        }
     }
 
     void ConfigurePins()
     {
         arduino.pinMode(pin, PinMode.SERVO);
+    }
+
+    /*void reset()
+    {
+        float hardwareAngle = Mathf.Atan((backTracker.transform.position.y - frontTracker.transform.position.y) / (.3f)) * Mathf.Rad2Deg;
+        while (hardwareAngle > 0.5f || hardwareAngle < -0.5f)
+        {
+            hardwareAngle = Mathf.Atan((backTracker.transform.position.y - frontTracker.transform.position.y) / (.3f)) * Mathf.Rad2Deg;
+            moveToLinear(hardwareAngle, 0);
+        }
+        arduino.analogWrite(pin, 1500);
+    }*/
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+            arduino.analogWrite(pin, 1500);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            arduino.analogWrite(pin, 1500);
+    }
+
+    private void OnApplicationQuit()
+    {
+        arduino.analogWrite(pin, 1500);
     }
 }
